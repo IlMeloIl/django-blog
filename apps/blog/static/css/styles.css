@@ -8,6 +8,177 @@ body {
     padding: 20px;
 }
 
+/* Nav styling */
+/* Navigation bar container */
+.main-nav {
+    background-color: #2c3e50;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Site title styling */
+.site-title {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* User status section */
+.user-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+}
+
+/* Welcome message */
+.user-status span {
+    color: #ecf0f1;
+}
+
+/* Login link */
+.user-status a {
+    color: #3498db;
+    text-decoration: none;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+/* Logout button */
+.user-status form button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Hover effects */
+.user-status a:hover {
+    background-color: #f5f6f7;
+}
+
+.user-status form button:hover {
+    background-color: #c0392b;
+}
+
+.create-post-link {
+    background-color: #2ecc71 !important;  /* Green color for creating new content */
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.create-post-link:hover {
+    background-color: #27ae60 !important;
+}
+
+/* Create post styling */
+/* Container for the entire create post page */
+.create-post-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Page title styling */
+.page-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Form field container */
+.form-field {
+    margin-bottom: 1.5rem;
+}
+
+/* Label styling */
+.field-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/* Input and textarea styling */
+.post-form input[type="text"],
+.post-form textarea,
+.post-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.post-form textarea {
+    min-height: 200px;
+}
+
+/* Help text styling */
+.help-text {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+/* Error message styling */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Form actions container */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Submit button styling */
+.submit-button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #27ae60;
+}
+
+/* Cancel link styling */
+.cancel-link {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.cancel-link:hover {
+    background-color: #c0392b;
+}
+
 /* Blog title styling */
 .blog-title {
     color: #2c3e50;

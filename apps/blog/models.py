@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils.text import  slugify
 
 # Create your models here.
 class BlogPost(models.Model):
@@ -17,6 +17,18 @@ class BlogPost(models.Model):
     slug = models.SlugField(unique=True)
     summary = models.TextField(blank=True, help_text='A brief summary of the blog post')
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+            counter = 1
+            original_slug = self.slug
+
+            while BlogPost.objects.filter(slug=self.slug).exists():
+                self.slug = f'{original_slug}-{counter}'
+                counter += 1
+        super().save(*args, **kwargs)
+        
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'Blog Post'

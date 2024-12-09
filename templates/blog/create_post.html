@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="create-post-container">
+        <h1 class="page-title">Create New Blog Post</h1>
+        <form method="post" class="post-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field_id_for_label }}" class="field-label">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="error-message">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button">Publish Post</button>
+                <a href="{% url 'index' %}" class="cancel-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
