@@ -1,0 +1,27 @@
+{% extends '../partials/_base.html' %}
+
+{% block content %}
+    <article class="single-post">
+        <header class="post-header">
+            <h1 class="post-title">{{ blog_post.title }}</h1>
+            <div class="post-meta">
+                Published on {{ blog_post.created_at|date:"F j, Y" }}
+            </div>
+        </header>
+
+        {% if blog_post.summary %}
+            <div class="post-summary">
+                {{ blog_post.summary }}
+            </div>
+        {% endif %}
+
+        <div class="post-content">
+            {{ blog_post.main_content|linebreaks }}
+        </div>
+
+        <footer class="post-footer">
+            <a href="{% url 'index' %}" class="back-link">Back to Blog</a>
+        </footer>
+
+    </article>
+{% endblock %}

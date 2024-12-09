@@ -1,0 +1,119 @@
+/* General layout and typography */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Blog title styling */
+.blog-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.post-title a {
+    color: #34495e;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.post-title a:hover {
+    color: #2980b9;
+}
+
+/* Individual blog post styling */
+.blog-post {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.post-title {
+    color: #34495e;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.post-summary {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Style for when there are no posts */
+.no-posts {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 2rem 0;
+}
+
+/* Single blog post CSS */
+/* Individual post page styling */
+.single-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.single-post .post-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.post-summary {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-left: 4px solid #2c3e50;
+}
+
+.post-content {
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.back-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #2980b9;
+}
