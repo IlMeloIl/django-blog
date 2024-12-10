@@ -245,6 +245,24 @@ body {
     text-align: center;
 }
 
+.post-header form button {
+    display: inline;
+    font-size: 0.95rem;
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-left: 1rem;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 12.8px;
+}
+
+.user-status form button:hover {
+    background-color: #c0392b;
+}
+
 .single-post .post-title {
     font-size: 2.5rem;
     color: #2c3e50;

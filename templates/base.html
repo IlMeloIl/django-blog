@@ -8,6 +8,15 @@
     <title>Blog & Portfolio</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+<script>
+    function confirmDelete(e){
+        if(!confirm('Are you sure you want to delete this post?')){
+            e.preventDefault()
+            return false
+        }
+        return true
+    }
+</script>
 <body>
     <nav class="main-nav">
         <a href="{% url 'index' %}" class="site-title">My Blog</a>

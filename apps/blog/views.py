@@ -41,3 +41,13 @@ def edit_post(request, slug):
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'blog/edit_post.html', {'form': form,  'post': post})
+
+@login_required
+def delete_post(request, slug):
+    post = get_object_or_404(BlogPost, slug=slug)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('index')
+    else:
+        return redirect('post', slug=slug)

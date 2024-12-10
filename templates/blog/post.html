@@ -6,6 +6,10 @@
             <h1 class="post-title">{{ blog_post.title }}</h1>
             {% if user.is_authenticated %}
                 <a href="{% url 'edit_post' slug=blog_post.slug %}" class="edit-button">Editar Post</a>
+                <form method="POST" action="{% url 'delete_post' slug=blog_post.slug %}" class="delete-button" id="deleteForm" onsubmit="return confirmDelete(event)" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete Post</button>
+                </form>
             {% endif %}
             <div class="post-meta">
                 Published on {{ blog_post.created_at|date:"F j, Y" }}
