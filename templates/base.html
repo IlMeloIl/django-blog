@@ -21,12 +21,16 @@
     <nav class="main-nav">
         <a href="{% url 'index' %}" class="site-title">My Blog</a>
         <div class="user-status">
-            {% if user.is_authenticated %}
+            {% if user.is_superuser %}
                 <span>Welcome, {{ user.username }}</span>
                 <a href="{% url 'create_post' %}" class="create-post-link">Create Post</a>
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
                     <button type="submit">Logout</button>
+                </form>
+                <form action="{% url 'search' %}">
+                    <input type="text" name="search" placeholder="Search for post by  title">
+                    <button type="submit">Search</button>
                 </form>
             {% else %}
                 <a href="{% url 'login' %}">Login</a>

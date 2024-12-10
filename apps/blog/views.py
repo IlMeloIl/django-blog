@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from apps.blog.models import BlogPost
 from django.contrib.auth.decorators import login_required
 from apps.blog.forms import BlogPostForm
+from django.db.models import Q
 
 # Create your views here.
 def index(request): 
@@ -51,3 +52,12 @@ def delete_post(request, slug):
         return redirect('index')
     else:
         return redirect('post', slug=slug)
+
+def search(request):
+    posts = BlogPost.objects.filter(status='published')
+
+    if "search" in request.GET:
+        name_to_search = request.GET['search']
+        if name_to_search:
+            posts = posts.filter(Q(title__icontains=name_to_search) | Q(main_content__icontains=name_to_search))
+    return render(request, 'blog/index.html', {'blog_posts': posts})
