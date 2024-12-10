@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="create-post-container">
+        <h1 class="page-title">Edit Post</h1>
+        <form method="post" class="post-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}" class="field-label">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        <p class="error-message">{{ field.errors }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="form-actions">
+                <button type="submit" class="save-edit">Salvar Edição</button>
+                <a href="{% url 'index' %}" class="cancel-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
