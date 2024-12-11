@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from apps.blog.models import BlogPost
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from apps.blog.forms import BlogPostForm
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -31,6 +32,7 @@ def post(request, slug):
     return render(request, 'blog/post.html', {'blog_post': blog_post})
 
 @login_required
+@staff_member_required(login_url='index')
 def create_post(request):
     if request.method == 'POST':
         form = BlogPostForm(request.POST)
@@ -43,6 +45,7 @@ def create_post(request):
     return render(request, 'blog/create_post.html', {'form': form})
 
 @login_required
+@staff_member_required(login_url='index')
 def edit_post(request, slug):
     post = get_object_or_404(BlogPost, slug=slug)
     
@@ -56,6 +59,7 @@ def edit_post(request, slug):
     return render(request, 'blog/edit_post.html', {'form': form,  'post': post})
 
 @login_required
+@staff_member_required(login_url='index')
 def delete_post(request, slug):
     post = get_object_or_404(BlogPost, slug=slug)
 
