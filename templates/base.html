@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog & Portfolio</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 </head>
 <script>
     function confirmDelete(e){
@@ -21,20 +26,23 @@
     <nav class="main-nav">
         <a href="{% url 'index' %}" class="site-title">My Blog</a>
         <div class="user-status">
-            {% if user.is_superuser %}
+            {% if user.is_authenticated %}
                 <span>Welcome, {{ user.username }}</span>
-                <a href="{% url 'create_post' %}" class="create-post-link">Create Post</a>
+                {% if user.is_superuser %}            
+                    <a href="{% url 'create_post' %}" class="nav-link nav-create">Create Post</a>
+                {% endif %}              
                 <form method="post" action="{% url 'logout' %}" style="display: inline;">
                     {% csrf_token %}
-                    <button type="submit">Logout</button>
+                    <button type="submit" class="nav-button nav-logout">Logout</button>
                 </form>
-                <form action="{% url 'search' %}">
-                    <input type="text" name="search" placeholder="Search for post by  title">
-                    <button type="submit">Search</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}">Login</a>
+            {% else %}  
+                <a href="{% url 'login' %}" class="nav-link nav-login">Login</a>
+                <a href="{% url 'register' %}" class="nav-link nav-register">Create Account</a>
             {% endif %}
+            <form action="{% url 'search' %}" class="search-form">
+                <input type="text" name="search" placeholder="Search for post by title" class="search-input">
+                <button type="submit" class="nav-button nav-search">Search</button>
+            </form>
         </div>
     </nav>
     {% block content %}

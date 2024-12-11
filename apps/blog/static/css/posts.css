@@ -1,0 +1,134 @@
+/* Blog title */
+.blog-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Post list styles */
+.blog-post {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.post-title {
+    color: #34495e;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.post-title a {
+    color: #34495e;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.post-title a:hover {
+    color: #2980b9;
+}
+
+.post-summary {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.post-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Single post styles */
+.single-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.single-post .post-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.post-meta {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.back-link {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: #2980b9;
+}
+
+.no-posts {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 2rem 0;
+}
+
+/* Post action buttons */
+.post-action {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.edit-post {
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+}
+
+.edit-post:hover {
+    background-color: #2980b9;
+}
+
+.delete-post {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.delete-post:hover {
+    background-color: #c0392b;
+}
+
+/* Delete form */
+.delete-form {
+    display: inline;
+}
