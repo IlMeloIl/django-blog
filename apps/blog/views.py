@@ -4,11 +4,23 @@ from apps.blog.models import BlogPost
 from django.contrib.auth.decorators import login_required
 from apps.blog.forms import BlogPostForm
 from django.db.models import Q
+from django.core.paginator import Paginator
+
+def paginate(query_set, request, per_page=5):
+    paginator = Paginator(query_set, per_page)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    return page_obj
 
 # Create your views here.
 def index(request): 
     blog_posts = BlogPost.objects.filter(status='published')
-    return render(request, 'blog/index.html', {'blog_posts': blog_posts})
+    page_obj = paginate(blog_posts, request)
+    return render(request, 'blog/index.html', {
+        'blog_posts': page_obj,
+        'has_previous': page_obj.has_previous(),
+        'has_next': page_obj.has_next(),
+        })   
 
 def post(request, slug):
     blog_post = get_object_or_404(BlogPost, slug=slug)
@@ -60,4 +72,16 @@ def search(request):
         name_to_search = request.GET['search']
         if name_to_search:
             posts = posts.filter(Q(title__icontains=name_to_search) | Q(main_content__icontains=name_to_search))
-    return render(request, 'blog/index.html', {'blog_posts': posts})
+    page_obj = paginate(posts, request)
+
+    get_copy = request.GET.copy()
+    if 'page' in get_copy:
+        get_copy.pop('page')
+    query_string = get_copy.urlencode()
+
+    return render(request, 'blog/index.html', {
+        'blog_posts': page_obj,
+        'has_previous': page_obj.has_previous(),
+        'has_next': page_obj.has_next(),
+        'query_string': query_string,
+        })

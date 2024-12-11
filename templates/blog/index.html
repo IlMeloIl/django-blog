@@ -25,4 +25,13 @@
     {% else %}
         <p class="no-posts">No posts available yet.</p>
 {% endif %}
+
+    {% if blog_posts.has_previous %}
+        <a href="?{{ query_string }}&page={{ blog_posts.previous_page_number }}">Anterior</a>
+    {% endif %}
+
+    {% if blog_posts.has_next %}
+        <a href="?{{ query_string }}&page={{ blog_posts.next_page_number }}">Proximo</a>
+    {% endif %}
+
 {% endblock %}
