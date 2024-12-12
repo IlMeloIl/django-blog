@@ -122,3 +122,18 @@ def comment(request, slug):
             return redirect('post', slug=slug)
         
     return redirect('post', slug=slug)
+
+
+@login_required
+def delete_comment(request, id):
+    comment = get_object_or_404(Comment, id=id)
+
+    if request.user != comment.author:
+        return redirect('post', slug=comment.post.slug)
+    
+    if request.method == 'POST':
+        post_slug = comment.post.slug
+        comment.delete()
+        return redirect('post', slug=post_slug)
+    
+    return redirect('post', comment.post.slug)

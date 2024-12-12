@@ -45,6 +45,12 @@
                     <div id="comment-content-{{ comment.id }}" class="comment-content">
                         Comment: <br>{{ comment.comment }}
                     </div>
+                    {% if user == comment.author %}
+                    <form action="{% url 'delete_comment' id=comment.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete Comment</button>
+                    </form>
+                    {% endif %}
                 </div>
             {% empty %}
                 <p>No comments yet.</p>
