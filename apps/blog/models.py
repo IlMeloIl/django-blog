@@ -38,3 +38,17 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Comment(models.Model):
+    post = models.ForeignKey(to=BlogPost, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return f'Commented by {self.author} on {self.post.title}'

@@ -25,9 +25,40 @@
         <div class="post-content">
             {{ blog_post.main_content|linebreaks }}
         </div>
-        <div>
+        <div class="post-author">
             Posted by: {{ blog_post.author }}
         </div>   
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'comment' slug=blog_post.slug %}" class="comment-form">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button type="submit" class="comment-button">Add Comment</button>
+        </form>
+        {% endif %}
+
+        <div class="comments-section">
+            <h3>Comments</h3>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="comment-author">Posted by: {{ comment.author.username }}</p>
+                    <p class="comment-date">Published on {{ comment.created_at|date:"F j, Y" }}</p>
+                    <div id="comment-content-{{ comment.id }}" class="comment-content">
+                        Comment: <br>{{ comment.comment }}
+                    </div>
+                </div>
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+
+            {% if comments.has_previous %}
+                <a href="?{{ query_string }}&page={{ comments.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            {% if comments.has_next %}
+                <a href="?{{ query_string }}&page={{ comments.next_page_number }}">Next</a>
+            {% endif %}    
+        </div>
+
         <footer class="post-footer">
             <a href="{% url 'index' %}" class="back-link">Back to Blog</a>
         </footer>

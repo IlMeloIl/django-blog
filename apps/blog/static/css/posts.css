@@ -132,3 +132,115 @@
 .delete-form {
     display: inline;
 }
+
+/* Post author styling */
+.post-author {
+    margin: 2rem 0;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Comment form styling */
+.comment-form {
+    margin: 2rem 0;
+}
+
+.comment-textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+}
+
+.comment-button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.comment-button:hover {
+    background-color: #2980b9;
+}
+
+/* Comments section styling */
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.comments-section h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual comment styling */
+.comment {
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.comment-author {
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.comment-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.comment-content {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* Comment form styling */
+.comments-section form {
+    margin-bottom: 2rem;
+}
+
+.comments-section textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.comments-section button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.comments-section button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Empty comments message */
+.comments-section p:empty + p {
+    color: #95a5a6;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem 0;
+}

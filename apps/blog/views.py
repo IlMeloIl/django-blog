@@ -1,9 +1,9 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
-from apps.blog.models import BlogPost
+from apps.blog.models import BlogPost, Comment
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from apps.blog.forms import BlogPostForm
+from apps.blog.forms import BlogPostForm, CommentForm
 from django.db.models import Q
 from django.core.paginator import Paginator
 
@@ -29,7 +29,23 @@ def post(request, slug):
     if blog_post.status != 'published':
         raise Http404('Post not found')
 
-    return render(request, 'blog/post.html', {'blog_post': blog_post})
+    comment_form = CommentForm()
+    comments = blog_post.comments.all()
+    page_obj = paginate(comments, request)
+    
+    get_copy = request.GET.copy()
+    if 'page' in get_copy:
+        get_copy.pop('page')
+    query_string = get_copy.urlencode()
+
+    return render(request, 'blog/post.html', {
+        'blog_post': blog_post,
+        'comment_form': comment_form,
+        'comments': page_obj,
+        'has_previous': page_obj.has_previous(),
+        'has_next': page_obj.has_next(),
+        'query_string': query_string,
+    })
 
 @login_required
 @staff_member_required(login_url='index')
@@ -91,3 +107,18 @@ def search(request):
         'has_next': page_obj.has_next(),
         'query_string': query_string,
         })
+
+@login_required
+def comment(request, slug):
+    post = get_object_or_404(BlogPost, slug=slug)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('post', slug=slug)
+        
+    return redirect('post', slug=slug)
