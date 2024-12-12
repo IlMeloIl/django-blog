@@ -25,7 +25,9 @@
         <div class="post-content">
             {{ blog_post.main_content|linebreaks }}
         </div>
-
+        <div>
+            Posted by: {{ blog_post.author }}
+        </div>   
         <footer class="post-footer">
             <a href="{% url 'index' %}" class="back-link">Back to Blog</a>
         </footer>

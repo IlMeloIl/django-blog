@@ -37,7 +37,9 @@ def create_post(request):
     if request.method == 'POST':
         form = BlogPostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             return redirect('index')
     else:
         form = BlogPostForm()

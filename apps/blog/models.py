@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import  slugify
+from django.contrib.auth.models import User
 
 # Create your models here.
 class BlogPost(models.Model):
@@ -16,6 +17,7 @@ class BlogPost(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
     slug = models.SlugField(unique=True)
     summary = models.TextField(blank=True, help_text='A brief summary of the blog post')
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, default=None, null=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
