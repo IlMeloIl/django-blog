@@ -123,6 +123,22 @@ def comment(request, slug):
         
     return redirect('post', slug=slug)
 
+@login_required
+def edit_comment(request, id):
+    comment = get_object_or_404(Comment, id=id)
+
+    if request.user != comment.author:
+        return redirect('post', slug=comment.post.slug)
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment.save()
+            return redirect('post', slug=comment.post.slug)
+    else:
+        form = CommentForm(instance=comment)
+    
+    return render(request, 'blog/edit_comment.html', {'form': form, 'comment': comment})
 
 @login_required
 def delete_comment(request, id):

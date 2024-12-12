@@ -46,6 +46,7 @@
                         Comment: <br>{{ comment.comment }}
                     </div>
                     {% if user == comment.author %}
+                    <a href="{% url 'edit_comment' id=comment.id %}" class="edit-button">Edit Post</a>
                     <form action="{% url 'delete_comment' id=comment.id %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Delete Comment</button>

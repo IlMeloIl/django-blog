@@ -9,5 +9,6 @@ urlpatterns = [
     path('post/<slug:slug>/delete', delete_post, name='delete_post'),
     path('search', search, name='search'),
     path('post/<slug:slug>/comment', comment, name='comment'),
+    path('comment/<int:id>/edit', edit_comment, name='edit_comment'),
     path('comment/<int:id>/delete', delete_comment, name='delete_comment'),
 ]
