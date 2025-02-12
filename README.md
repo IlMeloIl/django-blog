@@ -30,8 +30,8 @@ Uma plataforma de blog completa com autenticação de usuários, CRUD de posts/c
 
 ```bash
 # Clonar repositório
-git clone https://github.com/seu-usuario/blog-platform.git
-cd blog-platform
+https://github.com/IlMeloIl/django-blog.git
+cd django-blog
 
 # Criar ambiente virtual
 python -m venv venv
