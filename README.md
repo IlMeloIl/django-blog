@@ -43,10 +43,26 @@ source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 
 # Configurar ambiente
-export SECRET_KEY='sua-chave-secreta'  # Adicione ao .env posteriormente
+# Gere sua SECRET_KEY
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+```
+
+## <a name="secret-key">Gerando sua SECRET_KEY</a>
+
+Para rodar o projeto localmente, você precisará de uma `SECRET_KEY`. Siga os passos abaixo para gerar uma:
+
+1. Abra o terminal
+
+```bash
+# Execute o seguinte código
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+2. Copie a chave gerada e adicione ao arquivo .env ou diretamente no settings.py
+```bash
+SECRET_KEY = 'sua-chave-secreta-aqui'
 ```
 
 ## Estrutura do Projeto
@@ -58,21 +74,6 @@ blog-platform/
 ├── setup/             # Configurações Django
 ├── templates/         # Arquivos HTML
 └── static/            # CSS/JS/Imagens
-```
-
-## Gerando uma SECRET_KEY
-
-Para rodar o projeto localmente, você precisará de uma `SECRET_KEY`. Siga os passos abaixo para gerar uma:
-
-1. Abra um terminal Python:
-```python
-#Execute o seguinte código
-python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-```
-
-2. Copie a chave gerada e adicione ao arquivo .env ou diretamente no settings.py
-```
-SECRET_KEY = 'sua-chave-secreta-aqui'
 ```
 
 ## Uso
