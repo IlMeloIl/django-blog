@@ -1,6 +1,7 @@
 # Blog em Django
 
 Uma plataforma de blog completa com autenticação de usuários, CRUD de posts/comentários e painel administrativo.
+Este projeto foi desenvolvido como parte de um processo de aprendizado em Django e desenvolvimento web. Ele não será colocado em produção ou feito deploy em um ambiente real, servindo exclusivamente para fins educacionais.
 
 ## Funcionalidades
 
@@ -8,7 +9,7 @@ Uma plataforma de blog completa com autenticação de usuários, CRUD de posts/c
   - Login/Registro com validação
   - Controle de sessões
 - **Gestão de Conteúdo**
-  - Criação/Edição de posts com editor rico
+  - Criação/Edição de posts
   - Sistema de comentários
   - Status de posts (Rascunho/Publicado/Arquivado)
 - **Recursos Avançados**
@@ -49,7 +50,7 @@ python manage.py runserver
 ```
 
 ## Estrutura do Projeto
-```
+```bash
 blog-platform/
 ├── apps/
 │   ├── accounts/      # Autenticação
@@ -57,6 +58,21 @@ blog-platform/
 ├── setup/             # Configurações Django
 ├── templates/         # Arquivos HTML
 └── static/            # CSS/JS/Imagens
+```
+
+## Gerando uma SECRET_KEY
+
+Para rodar o projeto localmente, você precisará de uma `SECRET_KEY`. Siga os passos abaixo para gerar uma:
+
+1. Abra um terminal Python:
+```python
+#Execute o seguinte código
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+2. Copie a chave gerada e adicione ao arquivo .env ou diretamente no settings.py
+```
+SECRET_KEY = 'sua-chave-secreta-aqui'
 ```
 
 ## Uso
@@ -70,9 +86,3 @@ blog-platform/
   - Acesse /admin          
   - Gerencie posts/comentários
   - Controle status de publicação
-
-## Customização
-Configurações importantes no .env:
-```
-SECRET_KEY='sua-chave-secreta-aqui'
-```
