@@ -1,6 +1,6 @@
 # Blog em Django
 
-Uma plataforma de blog completa com autenticação de usuários, CRUD de posts/comentários e painel administrativo.
+Uma plataforma de blog com autenticação de usuários, CRUD de posts/comentários e painel administrativo.
 Este projeto foi desenvolvido como parte de um processo de aprendizado em Django e desenvolvimento web. Ele não será colocado em produção ou feito deploy em um ambiente real, servindo exclusivamente para fins educacionais.
 
 ## Funcionalidades
